@@ -4,5 +4,5 @@ from src.gui import HuffmanGUI
 if __name__ == "__main__":
     root = tk.Tk()
     app = HuffmanGUI(root)
-    root.geometry("400x300")
+    root.geometry("600x300")
     root.mainloop()
