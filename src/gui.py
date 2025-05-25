@@ -8,7 +8,7 @@ import os
 class HuffmanGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Huffman Compressor")
+        self.root.title("ZIP-ZONE")
         self.huffman = HuffmanCoding()
         self.setup_gui()
 
