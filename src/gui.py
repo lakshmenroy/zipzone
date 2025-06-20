@@ -51,7 +51,7 @@ class HuffmanGUI:
 
     def browse_file(self):
         """Open file dialog to select a file."""
-        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt"), ("Compressed files", "*.huf"), ("All files", "*.*")])
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.pdf"), ("Compressed files", "*.zip"), ("All files", "*.*")])
         if file_path:
             self.file_path_var.set(file_path)
             self.status_var.set(f"Selected: {os.path.basename(file_path)}")
@@ -66,7 +66,7 @@ class HuffmanGUI:
         try:
             text = FileHandler.read_file(file_path)
             encoded, tree = self.huffman.encode(text)
-            output_path = os.path.splitext(file_path)[0] + ".huf"
+            output_path = os.path.splitext(file_path)[0] + ".zip"
             FileHandler.save_compressed(output_path, encoded, tree)
             self.status_var.set(f"Success: File compressed to {os.path.basename(output_path)}")
             messagebox.showinfo("Success", f"File compressed to {output_path}")
@@ -77,9 +77,9 @@ class HuffmanGUI:
     def decompress_file(self):
         """Decompress the selected file."""
         file_path = self.file_path_var.get()
-        if not file_path or not file_path.endswith(".huf"):
-            self.status_var.set("Error: Please select a valid .huf file.")
-            messagebox.showerror("Error", "Please select a valid .huf file.")
+        if not file_path or not file_path.endswith(".zip"):
+            self.status_var.set("Error: Please select a valid .zip file.")
+            messagebox.showerror("Error", "Please select a valid .zip file.")
             return
         try:
             encoded, tree = FileHandler.load_compressed(file_path)
